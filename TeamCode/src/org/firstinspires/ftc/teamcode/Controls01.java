@@ -38,30 +38,20 @@ import com.qualcomm.robotcore.hardware.DcMotor;
             }
 
             if(gamepad1.right_stick_x == 1){
-                back_left.setPower(0);
-                front_left.setPower(1);
-                front_right.setPower(1);
-                back_right.setPower(1);
+                back_left.setPower(-1);
+                front_left.setPower(-1);
+                front_right.setPower(-1);
+                back_right.setPower(-1);
                 telemetry.update();
                 telemetry.addData("Left","Turning left");
-                if (gamepad1.start) {
-                    stop();
-                    telemetry.update();
-                    telemetry.addData("stop","Stopping");
-                }
             }
 
             if(gamepad1.right_stick_x == -1){
                 back_left.setPower(1);
                 front_left.setPower(1);
                 front_right.setPower(1);
-                back_right.setPower(0);
+                back_right.setPower(1);
                 telemetry.addData("Right","Turning right");
-                if (gamepad1.start) {
-                    stop();
-                    telemetry.update();
-                    telemetry.addData("stop","Stopping");
-                }
             }
 
             if (gamepad1.start) {
@@ -75,16 +65,16 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 
         back_left.setPower(-1);
         front_left.setPower(-1);
-        front_right.setPower(-1);
-        back_right.setPower(-1);
+        front_right.setPower(1);
+        back_right.setPower(1);
     }
 
     public void backward(){
 
         back_left.setPower(1);
         front_left.setPower(1);
-        front_right.setPower(1);
-        front_right.setPower(1);
+        front_right.setPower(-1);
+        front_right.setPower(-1);
 
     }
 
