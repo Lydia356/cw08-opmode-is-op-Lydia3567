@@ -75,16 +75,16 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 
         back_left.setPower(-1);
         front_left.setPower(-1);
-        front_right.setPower(1);
-        back_right.setPower(1);
+        front_right.setPower(-1);
+        back_right.setPower(-1);
     }
 
     public void backward(){
 
         back_left.setPower(1);
         front_left.setPower(1);
-        front_right.setPower(-1);
-        front_right.setPower(-1);
+        front_right.setPower(1);
+        front_right.setPower(1);
 
     }
 
