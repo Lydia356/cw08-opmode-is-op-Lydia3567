@@ -39,7 +39,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 
             if(gamepad1.right_stick_x == 1){
                 back_left.setPower(0);
-                front_left.setPower(-1);
+                front_left.setPower(1);
                 front_right.setPower(1);
                 back_right.setPower(1);
                 telemetry.update();
@@ -52,8 +52,8 @@ import com.qualcomm.robotcore.hardware.DcMotor;
             }
 
             if(gamepad1.right_stick_x == -1){
-                back_left.setPower(-1);
-                front_left.setPower(-1);
+                back_left.setPower(1);
+                front_left.setPower(1);
                 front_right.setPower(1);
                 back_right.setPower(0);
                 telemetry.addData("Right","Turning right");
