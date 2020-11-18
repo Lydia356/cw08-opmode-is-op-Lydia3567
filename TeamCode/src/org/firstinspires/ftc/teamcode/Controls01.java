@@ -23,13 +23,17 @@ import com.qualcomm.robotcore.hardware.DcMotor;
         back_right = hardwareMap.dcMotor.get("back_right_motor");
         }
         public void loop() {
-            telemetry.update();
-            if (gamepad1.left_stick_y == 2) {
+            float y = gamepad1.left_stick_y;
+            telemetry.addData("Value of left stick y",y);
+
+            float x = gamepad1.left_stick_x;
+            telemetry.addData("Value of left stick x",x);
+
+            if (gamepad1.left_stick_y < 0) {
                 forward();
                 telemetry.update();
                 telemetry.addData("Forward","Moved Forward");
             }
-
 
             if (gamepad1.left_stick_y == 1) {
                 backward();
