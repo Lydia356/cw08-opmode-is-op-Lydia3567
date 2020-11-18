@@ -8,29 +8,38 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 @TeleOp(name = "Controls 01", group = "Honors Robotics")
 
     public class Controls01 extends OpMode {
-        String name;
-        String group;
-        DcMotor back_left;
-        DcMotor front_left;
-       DcMotor front_right;
+    String name;
+    String group;
+    DcMotor back_left;
+    DcMotor front_left;
+    DcMotor front_right;
     DcMotor back_right;
 
     @Override
-        public void init(){
+    public void init() {
         back_left = hardwareMap.dcMotor.get("back_left_motor");
         front_left = hardwareMap.dcMotor.get("front_left_motor");
         front_right = hardwareMap.dcMotor.get("front_right_motor");
         back_right = hardwareMap.dcMotor.get("back_right_motor");
-        }
-        public void loop() {
-            float y = gamepad1.left_stick_y;
-            telemetry.addData("Value of left stick y",y);
+    }
 
-            float x = gamepad1.left_stick_x;
-            telemetry.addData("Value of left stick x",x);
+    public void loop() {
+        float y = gamepad1.left_stick_y;
+        telemetry.addData("Value of left stick y", y);
 
+
+        float x = gamepad1.left_stick_x;
+        telemetry.addData("Value of left stick x", x);
+
+        back_left.setPower(-y);
+        front_left.setPower(-y);
+        front_right.setPower(y);
+        back_right.setPower(y);
+
+
+            /*
             if (gamepad1.left_stick_y < 0) {
-                forward();
+                forward(y);
                 telemetry.update();
                 telemetry.addData("Forward","Moved Forward");
             }
@@ -41,7 +50,9 @@ import com.qualcomm.robotcore.hardware.DcMotor;
                 telemetry.addData("Backwards","Moved Backwards");
             }
 
-            if(gamepad1.right_stick_x == 1){
+*/
+
+            if(gamepad1.right_stick_x < 0){
                 back_left.setPower(-1);
                 front_left.setPower(-1);
                 front_right.setPower(-1);
@@ -50,27 +61,32 @@ import com.qualcomm.robotcore.hardware.DcMotor;
                 telemetry.addData("Left","Turning left");
             }
 
-            if(gamepad1.right_stick_x == -1){
-                back_left.setPower(1);
-                front_left.setPower(1);
-                front_right.setPower(1);
-                back_right.setPower(1);
-                telemetry.addData("Right","Turning right");
-            }
 
-            if (gamepad1.start) {
-                stop();
-                telemetry.update();
-                telemetry.addData("stop","Stopping");
-            }
-
+        if (gamepad1.right_stick_x >= 0) {
+            back_left.setPower(1);
+            front_left.setPower(1);
+            front_right.setPower(1);
+            back_right.setPower(1);
+            telemetry.addData("Right", "Turning right");
         }
-    public void forward(){
 
-        back_left.setPower(-1);
-        front_left.setPower(-1);
-        front_right.setPower(1);
-        back_right.setPower(1);
+        if (gamepad1.start) {
+            stop();
+            telemetry.update();
+            telemetry.addData("stop", "Stopping");
+        }
+
+    }
+}
+
+        /*
+
+    public void forward(float i){
+
+        back_left.setPower(-i);
+        front_left.setPower(-i);
+        front_right.setPower(i);
+        back_right.setPower(i);
     }
 
     public void backward(){
@@ -92,5 +108,5 @@ import com.qualcomm.robotcore.hardware.DcMotor;
     }
     }
 
-
+             */
 
