@@ -28,47 +28,14 @@ import com.qualcomm.robotcore.hardware.DcMotor;
         telemetry.addData("Value of left stick y", y);
 
 
-        float x = gamepad1.left_stick_x;
+        float x = gamepad1.right_stick_x;
         telemetry.addData("Value of left stick x", x);
 
-        back_left.setPower(-y);
-        front_left.setPower(-y);
-        front_right.setPower(y);
-        back_right.setPower(y);
+        back_left.setPower(y);
+        front_left.setPower(x);
+        front_right.setPower(x);
+        back_right.setPower(-y);
 
-
-            /*
-            if (gamepad1.left_stick_y < 0) {
-                forward(y);
-                telemetry.update();
-                telemetry.addData("Forward","Moved Forward");
-            }
-
-            if (gamepad1.left_stick_y == 1) {
-                backward();
-                telemetry.update();
-                telemetry.addData("Backwards","Moved Backwards");
-            }
-
-*/
-
-            if(gamepad1.right_stick_x < 0){
-                back_left.setPower(-1);
-                front_left.setPower(-1);
-                front_right.setPower(-1);
-                back_right.setPower(-1);
-                telemetry.update();
-                telemetry.addData("Left","Turning left");
-            }
-
-
-        if (gamepad1.right_stick_x >= 0) {
-            back_left.setPower(1);
-            front_left.setPower(1);
-            front_right.setPower(1);
-            back_right.setPower(1);
-            telemetry.addData("Right", "Turning right");
-        }
 
         if (gamepad1.start) {
             stop();
@@ -79,34 +46,5 @@ import com.qualcomm.robotcore.hardware.DcMotor;
     }
 }
 
-        /*
 
-    public void forward(float i){
-
-        back_left.setPower(-i);
-        front_left.setPower(-i);
-        front_right.setPower(i);
-        back_right.setPower(i);
-    }
-
-    public void backward(){
-
-        back_left.setPower(1);
-        front_left.setPower(1);
-        front_right.setPower(-1);
-        front_right.setPower(-1);
-
-    }
-
-    public void stop(){
-
-        back_left.setPower(0);
-        front_left.setPower(0);
-        front_right.setPower(0);
-        front_right.setPower(0);
-
-    }
-    }
-
-             */
 
