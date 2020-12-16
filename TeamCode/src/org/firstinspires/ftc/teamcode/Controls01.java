@@ -38,7 +38,10 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 
 
         if (gamepad1.start) {
-            stop();
+            back_left.setPower(0);
+            front_left.setPower(0);
+            front_right.setPower(0);
+            back_right.setPower(0);
             telemetry.update();
             telemetry.addData("stop", "Stopping");
         }
